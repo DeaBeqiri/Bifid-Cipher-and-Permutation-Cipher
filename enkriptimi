@@ -1,0 +1,67 @@
+#Bidil Cipher - Simple Substitution Cipher
+
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+key      = "qwertyuiopasdfghjklzxcvbnm"  
+
+
+encrypt_dict = {alphabet[i]: key[i] for i in range(len(alphabet))}
+
+
+decrypt_dict = {key[i]: alphabet[i] for i in range(len(alphabet))}
+
+
+def encrypt(text):
+    result = ""
+    for char in text:
+        if char.lower() in encrypt_dict:
+            if char.isupper():
+                result += encrypt_dict[char.lower()].upper()
+            else:
+                result += encrypt_dict[char]
+        else:
+            result += char
+    return result
+
+
+def decrypt(text):
+    result = ""
+    for char in text:
+        if char.lower() in decrypt_dict:
+            if char.isupper():
+                result += decrypt_dict[char.lower()].upper()
+            else:
+                result += decrypt_dict[char]
+        else:
+            result += char
+    return result
+
+
+
+def main():
+    while True:
+        print("\n--- Bidil Cipher ---")
+        print("1. Enkripto tekst")
+        print("2. Dekripto tekst")
+        print("3. Dil")
+
+        choice = input("Zgjedh opsionin: ")
+
+        if choice == "1":
+            text = input("Shkruaj tekstin: ")
+            print("Teksti i enkriptuar:", encrypt(text))
+
+        elif choice == "2":
+            text = input("Shkruaj tekstin: ")
+            print("Teksti i dekriptuar:", decrypt(text))
+
+        elif choice == "3":
+            print("Duke dalë...")
+            break
+
+        else:
+            print("Opsion i pavlefshëm!")
+
+
+if __name__ == "__main__":
+    main()
