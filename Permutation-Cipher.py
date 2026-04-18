@@ -18,7 +18,7 @@ def encrypt_permutation_cipher(plaintext, key):
     block_size = len(key)
     plaintext = pad_text(plaintext, block_size)
 
-    ciphertext= " "
+    ciphertext= ""
 
     for i in range(0, len(plaintext), block_size):
         block = plaintext[i:i + block_size]
@@ -31,7 +31,24 @@ def encrypt_permutation_cipher(plaintext, key):
 
     return ciphertext
 
+def decrypt_permutation_cipher(ciphertext,key):
+    ciphertext= clean_text(ciphertext)
+    block_size= len(key)
+    inverse_key= get_inverse_key(key)
 
+    plaintext=""
+
+    for i in range(0,len(ciphertext),block_size):
+        block= ciphertext[i:i+block_size]
+        decrypted_block=['']*block_size
+
+        for j in range(block_size):
+            decrypted_block[j]= block[inverse_key[j]]
+
+
+        plaintext += ''.join(decrypted_block)
+
+    return plaintext
 
 
 if __name__ == "__main__":
@@ -39,10 +56,11 @@ if __name__ == "__main__":
     text="COMPUTER"
 
     encrypted = encrypt_permutation_cipher(text, key)
-  
+    decrypted=decrypt_permutation_cipher(encrypted,key)
 
     print("\n---Permutation Cipher---")
     print("Original :", text)
     print("Encrypted :", encrypted)
+    print("Decrypted :",decrypted)
 
     
