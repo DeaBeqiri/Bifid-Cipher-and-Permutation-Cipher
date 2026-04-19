@@ -1,5 +1,5 @@
 def clean_text(text):
-    return text.replace(" ", "").upper()
+    return text.upper()
 
 
 def pad_text(text, block_size):
@@ -12,6 +12,9 @@ def get_inverse_key(key):
     for i, pos in enumerate(key):
         inverse[pos] = i
     return inverse
+
+def is_valid_key(key):
+    return sorted(key)==list(range(len(key)))
 
 def encrypt_permutation_cipher(plaintext, key):
     plaintext = clean_text(plaintext)
@@ -48,19 +51,24 @@ def decrypt_permutation_cipher(ciphertext,key):
 
         plaintext += ''.join(decrypted_block)
 
-    return plaintext
+    return plaintext.rstrip('X')
 
 
 if __name__ == "__main__":
-    key = [2,0,3,1]
-    text="COMPUTER"
+    
+ text = input("Shkruaj fjalen: ")
 
+key_input = input("Shkruaj key: ")
+key = list(map(int, key_input.split()))
+
+if not is_valid_key(key):
+    print("Key nuk eshte valid")
+else:
     encrypted = encrypt_permutation_cipher(text, key)
-    decrypted=decrypt_permutation_cipher(encrypted,key)
+    decrypted = decrypt_permutation_cipher(encrypted, key)
 
     print("\n---Permutation Cipher---")
-    print("Original :", text)
+    
     print("Encrypted :", encrypted)
-    print("Decrypted :",decrypted)
-
+    print("Decrypted :", decrypted)
     
