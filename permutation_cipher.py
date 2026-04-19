@@ -14,7 +14,21 @@ def get_inverse_key(key):
     return inverse
 
 def is_valid_key(key):
-    return sorted(key)==list(range(len(key)))
+    n = len(key)
+
+    # pa duplicate
+    if len(set(key)) != n:
+        return False
+
+    # case 1: 0-based
+    if sorted(key) == list(range(n)):
+        return True
+
+    # case 2: 1-based (USER FRIENDLY)
+    if sorted(key) == list(range(1, n + 1)):
+        return True
+
+    return False
 
 def encrypt_permutation_cipher(plaintext, key):
     plaintext = clean_text(plaintext)
@@ -52,23 +66,3 @@ def decrypt_permutation_cipher(ciphertext,key):
         plaintext += ''.join(decrypted_block)
 
     return plaintext.rstrip('X')
-
-
-if __name__ == "__main__":
-    
- text = input("Shkruaj fjalen: ")
-
-key_input = input("Shkruaj key: ")
-key = list(map(int, key_input.split()))
-
-if not is_valid_key(key):
-    print("Key nuk eshte valid")
-else:
-    encrypted = encrypt_permutation_cipher(text, key)
-    decrypted = decrypt_permutation_cipher(encrypted, key)
-
-    print("\n---Permutation Cipher---")
-    
-    print("Encrypted :", encrypted)
-    print("Decrypted :", decrypted)
-    

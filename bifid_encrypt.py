@@ -46,11 +46,3 @@ def bifid_encrypt(plaintext, key, period):
             ciphertext += matrix[combined[j]][combined[j+1]]
 
     return ciphertext
-
-
-# ===== MAIN =====
-text = input("Enter plaintext: ")
-key = input("Enter key: ")
-period = int(input("Enter period: "))
-
-print("Encrypted:", bifid_encrypt(text, key, period))

@@ -48,11 +48,3 @@ def bifid_decrypt(ciphertext, key, period):
             plaintext += matrix[rows[j]][cols[j]]
 
     return plaintext
-
-
-# ===== MAIN =====
-text = input("Enter ciphertext: ")
-key = input("Enter key: ")
-period = int(input("Enter period: "))
-
-print("Decrypted:", bifid_decrypt(text, key, period))
