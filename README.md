@@ -1,114 +1,74 @@
-# Bifid-Cipher-and-Permutation-Cipher
+# Bifid Cipher and Permutation Cipher
 
-Permutation Cipher (Enkriptim)
+## Permutation Cipher
+
+### Enkriptimi
 Permutation Cipher është një algoritëm klasik kriptografik që:
+- Përdor një key (permutation e indekseve)
+- Riorganizon karakteret sipas key-t
+- Nuk ndryshon shkronjat, vetëm pozicionin
+- Gjeneron ciphertext
 
-Përdor një key (permutation e indekseve)
-Çdo shkronjë e tekstit riorganizohet sipas key-t
-Karakteret nuk zëvendësohen, vetëm ndryshojnë pozicion
-Krijohet një tekst i enkriptuar (ciphertext)
-
-Permutation Cipher (Dekriptim)
-
+### Dekriptimi
 Procesi i kundërt:
+- Përdoret inverse e key-t
+- Karakteret vendosen në pozicionet origjinale
+- Rikthehet teksti fillestar
 
-Përdoret inverse e key-t
-Karakteret vendosen në pozicionet origjinale
-Rikrijohet teksti fillestar
+### Shembull
+Teksti: mystery  
+Key: 2 0 3 1  
+Output: smtyyexr  
 
+---
 
-Shembuj ekzekutimi
-Enkriptim
-Teksti: mystery
-Key: 2 0 3 1
-Output: smtyyexr
+## Bifid Cipher
 
-Dekriptim
-Input:
-Ciphertext: (outputi i mësipërm)
-Key: 2 0 3 1
-Output: mystery
+### Enkriptimi
+Bifid Cipher është një algoritëm që:
+- Përdor një matricë 5x5 (Polybius Square)
+- Shndërron shkronjat në koordinata
+- Kombinon rreshtat dhe kolonat
+- Gjeneron ciphertext
 
-Shënime:
-Key duhet të jetë permutation valide (pa përsëritje)
-Algoritmi punon vetëm me pozicione, jo me ndryshim shkronjash
-Hapësirat zakonisht hiqen ose injorohen në implementim
-
--------------------------
-
-Bifid Cipher (Enkriptim)
-Bifid Cipher është një algoritëm klasik kriptografik që:
-
-Përdor një 5x5 Polybius Square
-Çdo shkronjë shndërrohet në koordinata (rresht, kolonë)
-Të gjitha rreshtat dhe kolonat kombinohen
-Nga këto krijohet teksti i enkriptuar
- Bifid Cipher (Dekriptim)
-
+### Dekriptimi
 Procesi i kundërt:
+- Ciphertext kthehet në koordinata
+- Ndahen në rreshta dhe kolona
+- Rikthehet teksti origjinal
 
-Ciphertext kthehet në koordinata
-Koordinatat ndahen në rreshta dhe kolona
-Kombinohen përsëri për të marrë tekstin origjinal
+### Shembull
+Teksti: soteshtedite  
+Key: crypto  
+Period: 5  
+Output: mrstzfahzqrz  
 
+---
 
-Shembuj ekzekutimi
-Enkriptim
-Teksti: soteshtedite
-Key: crypto
-Period: 5
-Output: mrstzfahzqrz
+## Vizualizimi
 
-Dekriptim
-Ciphertext: (outputi i mësipërm)
-Key: crypto
-Period: 5
-Output: soteshtedite
-Shënime:
-Shkronja "j" zëvendësohet me "i"
-Hapësirat dhe karakteret jo-alfabetike hiqen
-Algoritmi punon vetëm me shkronja
+Projekti përfshin vizualizim grafik me Turtle:
+- Tregon hapat e enkriptimit dhe dekriptimit
+- Vizualizon lëvizjen e shkronjave
+- Shërben si mjet edukativ
 
----------------------------
+---
 
-Vizualizimi (Visualization)
-Ky projekt përfshin edhe vizualizim grafik me Turtle:
+## Main Page
 
-Tregon hapat e enkriptimit dhe dekriptimit
-Shfaq lëvizjen e shkronjave sipas key-t
-Vizualizon procesin hap pas hapi për të kuptuar algoritmin
-Punon si mjet edukativ për kriptografi
+Mainpage është komponenti kryesor që:
+- Menaxhon menunë
+- Merr input nga përdoruesi
+- Zgjedh algoritmin (Permutation ose Bifid)
+- Thërret funksionet përkatëse
+- Kontrollon vizualizimin
 
----------------------------
+---
 
-Main Page (mainpage.py)
+## Struktura e Projektit
 
-Mainpage është pjesa kryesore e programit dhe funksionon si “kontroller” i gjithë sistemit të cipher-ave.
-
-Roli i mainpage:
-- Menaxhon menunë kryesore të programit
-- Merr input nga përdoruesi (tekst, key, zgjedhje)
-- Vendos cilin algoritëm të përdorë (Permutation ose Bifid)
-- Thërret funksionet nga file të tjerë
-- Kontrollon nëse përdoruesi dëshiron vizualizim
-- Koordinon gjithë rrjedhën e programit
-
-Struktura e Mainpage
-
-Menu kryesore
-Programi fillon me një menu ku përdoruesi zgjedh:
-
-1. Permutation Cipher
-2. Bifid Cipher
-0. Exit
-
-Çdo opsion e dërgon përdoruesin në një funksion të veçantë.
-
-----------------------------
-
-Struktura e projektit
-mainpage.py – Menu kryesore dhe kontrolli i programit
-permutation_cipher.py – Implementimi i Permutation Cipher
-bifid_encrypt.py – Enkriptimi i Bifid Cipher
-bifid_decrypt.py – Dekriptimi i Bifid Cipher
-visualization.py – Animimet me Turtle Graphics
+- mainpage.py  
+- permutation_cipher.py  
+- bifid_encrypt.py  
+- bifid_decrypt.py  
+- visualization.py  
