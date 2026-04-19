@@ -104,7 +104,7 @@ Programi fillon me një menu ku përdoruesi zgjedh:
 
 Çdo opsion e dërgon përdoruesin në një funksion të veçantë.
 
----------------------------
+----------------------------
 
 Struktura e projektit
 mainpage.py – Menu kryesore dhe kontrolli i programit
